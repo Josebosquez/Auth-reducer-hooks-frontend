@@ -1,21 +1,17 @@
 import React from 'react'
+
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
-import NavBar from "./components/Navbar/Navbar"
-import Auth from "./components/Auth/Auth"
-import Home from "./components/Home/Home"
-import NotFound from "./components/NotFound/notfound"
+import Spinner from "./components/Spinner/Spinner"
+import MainRouter from './MainRouter'
 
 function App() {
-  return <Router>
-    <Switch>
-      <Route exact path='/sign-up' component={Auth} />
-      <Route exact path='/login' component={Auth} />
-
-      <Route exact path='/logout' render={() => <Redirect to='login' />} />
-      <Route component={NotFound} />
-
-    </Switch>
-  </Router>
+  return (
+    <React.Suspense fallback={<Spinner />}>
+      <Router>
+        <MainRouter />
+      </Router>
+    </React.Suspense>
+  )
 }
 
 export default App
