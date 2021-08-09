@@ -13,12 +13,17 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function Auth() {
+function Auth(props) {
     const classes = useStyles();
+    console.log(props);
+    console.log(props.match);
+    
+    let isLoginRoute=props.match.path === "/login"
+    let buttonTitle = isLoginRoute ? "Login" : "Sign up"
 
     return <Grid container spacing={0} justifyContent="center">
         <form className={classes.root}>
-            
+
             <Grid item m={6}>
                 <TextField fullWidth label="Email" name="email" />
             </Grid>
@@ -37,7 +42,7 @@ function Auth() {
                     color="primary"
                     style={{ marginTop: 10 }}
                 >
-                    Login
+                    {buttonTitle}
                 </Button>
             </Grid>
         </form>
