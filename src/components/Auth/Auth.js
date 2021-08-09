@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
 
 function Auth(props) {
     const classes = useStyles();
-    console.log(props);
-    console.log(props.match);
+    // console.log(props);
+    // console.log(props.match);
     
     let isLoginRoute=props.match.path === "/login"
     let buttonTitle = isLoginRoute ? "Login" : "Sign up"
@@ -28,9 +28,11 @@ function Auth(props) {
                 <TextField fullWidth label="Email" name="email" />
             </Grid>
 
-            <Grid item m={6}>
-                <TextField fullWidth label="Username" name="username" />
-            </Grid>
+            {!isLoginRoute && (
+                <Grid item m={6}>
+                    <TextField fullWidth label="Username" name="username" />
+                </Grid>
+            )}
 
             <Grid item m={6}>
                 <TextField fullWidth label="Password" name="password" />
