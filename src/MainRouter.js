@@ -1,14 +1,13 @@
 import React from 'react'
 
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom"
-// import NavBar from "./components/Navbar/Navbar"
+import NavBar from "./components/Navbar/Navbar"
 // import Auth from "./components/Auth/Auth"
 // import Home from "./components/Home/Home"
 // import NotFound from "./components/NotFound/NotFound"
 
 const Home = React.lazy(() => import("./components/Home/Home"))
 const Auth = React.lazy(() => import("./components/Auth/Auth"))
-const NavBar = React.lazy(() => import("./components/Navbar/Navbar"))
 const NotFound = React.lazy(() => import("./components/NotFound/NotFound"))
 
 function MainRouter() {
@@ -22,7 +21,6 @@ function MainRouter() {
                 <Route exact path='/' component={Home} />
 
                 <Route component={NotFound} />
-
             </Switch>
         </Router>
     )
